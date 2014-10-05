@@ -14,14 +14,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pasteBoard = NSPasteboard.generalPasteboard()
     var statusBarIcon = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
 
-    func oneWord(sender: NSMenuItem) {
+    func sendToPasteBoard(text: String) {
         pasteBoard.clearContents()
-        pasteBoard.writeObjects(["one"])
+        pasteBoard.writeObjects([text])
     }
     
-    func twoWord(sender: NSMenuItem) {
-        pasteBoard.clearContents()
-        pasteBoard.writeObjects(["two"])
+    func oneLine(sender: NSMenuItem) {
+        let url = NSURL(string: "http://loripsum.net/api/1/short/plaintext")
+        let request = NSURLRequest(URL: url!)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            self.sendToPasteBoard((NSString(data: data, encoding: NSUTF8StringEncoding) ?? "nope"))
+        }
+    }
+    
+    func twoLine(sender: NSMenuItem) {
+        sendToPasteBoard("two")
     }
     
     
@@ -42,16 +49,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         randomIpsumMenu.addItem(NSMenuItem.separatorItem())
         
-        var wordMenu = NSMenu()
-        var wordMenuItem = NSMenuItem(title: "Word", action: nil, keyEquivalent: "")
-        var oneWordItem = NSMenuItem(title: "1", action: Selector("oneWord:"), keyEquivalent: "")
-        var twoWordItem = NSMenuItem(title: "2", action: Selector("twoWord:"), keyEquivalent: "")
+        var lineMenu = NSMenu()
+        var lineMenuItem = NSMenuItem(title: "Line", action: nil, keyEquivalent: "")
+        var oneLineItem = NSMenuItem(title: "1", action: Selector("oneLine:"), keyEquivalent: "")
+        var twoLineItem = NSMenuItem(title: "2", action: Selector("twoLine:"), keyEquivalent: "")
 
-        wordMenu.addItem(oneWordItem)
-        wordMenu.addItem(twoWordItem)
+        lineMenu.addItem(oneLineItem)
+        lineMenu.addItem(twoLineItem)
         
-        randomIpsumMenu.setSubmenu(wordMenu, forItem: wordMenuItem)
-        randomIpsumMenu.addItem(wordMenuItem)
+        randomIpsumMenu.setSubmenu(lineMenu, forItem: lineMenuItem)
+        randomIpsumMenu.addItem(lineMenuItem)
         
         self.statusBarIcon.menu = randomIpsumMenu
     }
