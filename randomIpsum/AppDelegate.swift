@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainMenu = NSMenuItem()
     
     var languageMenu = NSMenu()
-    var languageMenuItem = NSMenuItem(title: "Choose Language", action: nil, keyEquivalent: "")
+    var languageMenuItem = NSMenuItem(title: "Language", action: nil, keyEquivalent: "")
     var latinLanugage = NSMenuItem(title: "Latin", action: nil, keyEquivalent: "")
     
     latinLanugage.state = 1;
