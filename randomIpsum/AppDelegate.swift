@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   var pasteBoard = NSPasteboard.generalPasteboard()
   var statusBarIcon = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+
   
   func sendToPasteBoard(text: String) {
     pasteBoard.clearContents()
@@ -40,16 +41,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var randomIpsumMenu = NSMenu()
     var mainMenu = NSMenuItem()
     
-    var languageMenu = NSMenu()
-    var languageMenuItem = NSMenuItem(title: "Language", action: nil, keyEquivalent: "")
-    var latinLanugage = NSMenuItem(title: "Latin", action: nil, keyEquivalent: "")
+    var ipsumMenu = NSMenu()
+    var ipsumMenuItem = NSMenuItem(title: "Ipsum", action: nil, keyEquivalent: "")
+    var loremIpsum = NSMenuItem(title: "Lorem", action: nil, keyEquivalent: "")
     
-    latinLanugage.state = 1;
+    loremIpsum.state = 1;
     
-    languageMenu.addItem(latinLanugage)
+    ipsumMenu.addItem(loremIpsum)
     
-    randomIpsumMenu.setSubmenu(languageMenu, forItem: languageMenuItem)
-    randomIpsumMenu.addItem(languageMenuItem)
+    randomIpsumMenu.setSubmenu(ipsumMenu, forItem: ipsumMenuItem)
+    randomIpsumMenu.addItem(ipsumMenuItem)
     
     randomIpsumMenu.addItem(NSMenuItem.separatorItem())
     
