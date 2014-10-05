@@ -10,17 +10,9 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     var pasteBoard = NSPasteboard.generalPasteboard()
-    
-    var statusBar = NSStatusBar.systemStatusBar()
-
-    var appMenu: NSMenu = NSMenu()
-
-    var languageMenu: NSMenuItem!
-    var wordMenu: NSMenuItem!
-    
-    var latinLanguage: NSMenuItem!
+    var statusBarIcon = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
 
     func oneWord(sender: NSMenuItem) {
         pasteBoard.clearContents()
@@ -41,17 +33,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func fiveWord(sender: NSMenuItem) {
     }
     
-    override func awakeFromNib() {
-        languageMenu.menu = appMenu
-        languageMenu.title = "Choose Language"
     
-//        menuItem.title = "Clicked"
-//        menuItem.action = Selector("setWindowVisible:")
-//        menuItem.keyEquivalent = ""
-//        appMenu.addItem(languageMenu)
+    func initMenu() {
+        var randomIpsumMenu = NSMenu()
+        var mainMenu = NSMenuItem()
+
+        var languageMenu = NSMenu()
+        var languageMenuItem = NSMenuItem()
+        
+        
+        var latinLanugage = NSMenuItem(title: "Latin", action: nil, keyEquivalent: "")
+        languageMenu.addItem(latinLanugage)
+        
+        languageMenuItem.title = "Choose Language"
+        
+        randomIpsumMenu.setSubmenu(languageMenu, forItem: languageMenuItem)
+        randomIpsumMenu.addItem(languageMenuItem)
+        randomIpsumMenu.addItem(NSMenuItem.separatorItem())
+
+        
+        self.statusBarIcon.menu = randomIpsumMenu
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        self.statusBarIcon.title = "RI"
+        
+        initMenu()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

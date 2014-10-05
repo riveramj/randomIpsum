@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		695870F019DF8CE800CE65FB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 695870EE19DF8CE800CE65FB /* MainMenu.xib */; };
 		69CE424619DF7827007DB721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CE424519DF7827007DB721 /* AppDelegate.swift */; };
 		69CE424819DF7827007DB721 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CE424719DF7827007DB721 /* Images.xcassets */; };
 		69CE425719DF7827007DB721 /* randomIpsumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CE425619DF7827007DB721 /* randomIpsumTests.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		695870EF19DF8CE800CE65FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		69CE424019DF7827007DB721 /* randomIpsum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = randomIpsum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CE424419DF7827007DB721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CE424519DF7827007DB721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				69CE424519DF7827007DB721 /* AppDelegate.swift */,
 				69CE424719DF7827007DB721 /* Images.xcassets */,
+				695870EE19DF8CE800CE65FB /* MainMenu.xib */,
 				69CE424319DF7827007DB721 /* Supporting Files */,
 			);
 			path = randomIpsum;
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69CE424819DF7827007DB721 /* Images.xcassets in Resources */,
+				695870F019DF8CE800CE65FB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +226,17 @@
 			targetProxy = 69CE425119DF7827007DB721 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		695870EE19DF8CE800CE65FB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				695870EF19DF8CE800CE65FB /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		69CE425819DF7827007DB721 /* Debug */ = {
