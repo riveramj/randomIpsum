@@ -24,33 +24,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pasteBoard.writeObjects(["two"])
     }
     
-    func threeWord(sender: NSMenuItem) {
-    }
-    
-    func fourWord(sender: NSMenuItem) {
-    }
-    
-    func fiveWord(sender: NSMenuItem) {
-    }
-    
     
     func initMenu() {
         var randomIpsumMenu = NSMenu()
         var mainMenu = NSMenuItem()
 
         var languageMenu = NSMenu()
-        var languageMenuItem = NSMenuItem()
-        
-        
+        var languageMenuItem = NSMenuItem(title: "Choose Language", action: nil, keyEquivalent: "")
         var latinLanugage = NSMenuItem(title: "Latin", action: nil, keyEquivalent: "")
-        languageMenu.addItem(latinLanugage)
         
-        languageMenuItem.title = "Choose Language"
+        latinLanugage.state = 1;
+        
+        languageMenu.addItem(latinLanugage)
         
         randomIpsumMenu.setSubmenu(languageMenu, forItem: languageMenuItem)
         randomIpsumMenu.addItem(languageMenuItem)
+        
         randomIpsumMenu.addItem(NSMenuItem.separatorItem())
+        
+        var wordMenu = NSMenu()
+        var wordMenuItem = NSMenuItem(title: "Word", action: nil, keyEquivalent: "")
+        var oneWordItem = NSMenuItem(title: "1", action: Selector("oneWord:"), keyEquivalent: "")
+        var twoWordItem = NSMenuItem(title: "2", action: Selector("twoWord:"), keyEquivalent: "")
 
+        wordMenu.addItem(oneWordItem)
+        wordMenu.addItem(twoWordItem)
+        
+        randomIpsumMenu.setSubmenu(wordMenu, forItem: wordMenuItem)
+        randomIpsumMenu.addItem(wordMenuItem)
         
         self.statusBarIcon.menu = randomIpsumMenu
     }
