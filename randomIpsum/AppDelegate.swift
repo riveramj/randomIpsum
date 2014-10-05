@@ -19,16 +19,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pasteBoard.writeObjects([text])
     }
     
-    func oneLine(sender: NSMenuItem) {
-        let url = NSURL(string: "http://loripsum.net/api/1/short/plaintext")
+    func getLoremIpsum(requestedLength: String) {
+        let url = NSURL(string: "http://loripsum.net/api/" + requestedLength)
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             self.sendToPasteBoard((NSString(data: data, encoding: NSUTF8StringEncoding) ?? "nope"))
         }
     }
     
+    func oneLine(sender: NSMenuItem) {
+        getLoremIpsum("/1/short/plaintext")
+    }
+    
     func twoLine(sender: NSMenuItem) {
-        sendToPasteBoard("two")
+        getLoremIpsum("/2/short/plaintext")
     }
     
     
